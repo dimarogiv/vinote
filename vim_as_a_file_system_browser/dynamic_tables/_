@@ -1,0 +1,19 @@
+# Vim as a file system browser > Dynamic tables
+
+You write a table like this:
+|sntsou|huh|huntesoahuntoe|huh|h|huhtenoa|too|huhuhuh|
+|1|name|Dima|Rogiv|heh|huhuhuh|156|tete|
+
+Then, when you press <Esc> it becomes this:
++------------------------------------------------------------------------+
+| sntsou | huh | huntesoahuntoe | huh   | h   | huhtenoa | too | huhuhuh |
+| 1      | name| Dima           | Rogiv | heh | huhuhuh  | 156 | tete    |
++------------------------------------------------------------------------+
+
+When you edit some entries it shifts, like this:
++------------------------------------------------------------------------+
+| sntsou | huh | huntesoahuntoe | huh   | h   | huhtenoa | too | huhuhuh |
+| 1      | name| Dima Rohiv Vasylovich          | Rogiv | heh | huhuhuh  | 156 | tete    |
++------------------------------------------------------------------------+
+
+And when you click <Esc> it should recover the collumns

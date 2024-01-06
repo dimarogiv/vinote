@@ -1,0 +1,4 @@
+Make it be able to rename the notes, e.g. folder names by changing the word
+inside the note. It can be done by typing something like ciw, but its
+alternative, then, you type the new word, and after pressing Esc it reads the
+word and renames the folder to it.

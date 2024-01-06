@@ -1,0 +1,10 @@
+With every file creation the header should be added to that file, which
+corresponds to the file name with _ 's replaced by spaces, and starts with a
+capital letter, following one #. 
+
+It should specify the full path, where slashes are replaced by > signs.
+
+The next line after it is an empty line.
+
+The header should be clickable. If you place cursor somewhere on the header, and
+type gf it goes to that note.

@@ -1,0 +1,69 @@
+The idea: vim should be able to browse all of the file system.
+
+- [ ] When typing ef on some word it goes to that file or folder. If it's a
+      folder it opens _ there, if it's a file it opens that file.
+- [ ] *header*
+- [ ] the path should be added at the top of each window (requires patching)
+- [ ] find some beautiful replacement for asterisks for denoting the files. It
+      could be vertical pipes
+- [ ] reassign the control keys to something more intuitive and more accessible,
+      including quit key
+- [ ] make every note be read as an .md file
+- [ ] when searching for a keyword exclude the dot files
+- [ ] when searching for a keyword and clicking ESC it cancels without going
+      anywhere
+- [ ] when searching for a keyword and the menu pops up it cancels and doesn't
+      go anywhere after clicking ESC
+- [ ] make a command for going forward in history
+- [ ] make it open the context of cword file inside the current note, just below
+      the cursor
+
+Notion: 
+- [x] while editing notes it saves repeatedly. 
+- [x] After each session it saves the path to the note where have you been
+      last time, so that it opens it again in the next session. 
+- [x] Also make it be able to rename the notes, e.g. folder names by changing
+      the word inside the note. It can be done by typing something like ciw, but
+      its alternative, then, you type the new word, and after pressing Esc it
+      reads the word and renames the folder to it.
+- [x] Also, make a function for searching for patterns throughout the note
+      system, it can be done with the help of ack or grep -R.
+- [ ] And make the notes be able to open the child note inside the current note.
+- [x] Make the possibility to insert links inside the notes
+- [x] Make the possibility to move some notes inside others
+- [x] add "home", and "go back by history" keys
+- [ ] if some folder doesn't have any text in _ delete it automatically when
+      moving somewhere else
+- [x] restore textwidth
+- [ ] make Rename() function remove the current directory after
+      popup_filter_yes_no if it currently exists before inserting new one
+- [ ] make a schedule folder where it moves some tasks to the *../../today* folder
+      if the proper time came, or the reminders field, perhaps at the top of the
+      home page.
+- [ ] make *dynamic_tables*
+- [x] make a link function that works with `ln` command
+- [ ] implement logging system
+- [ ] write tests
+- [x] make it write motion history specifying paths starting with the notion
+      root
+
+File browser: 
+- [ ] while edititng files it should be saved explicitly, but when not
+      saved then go back forcefully or not. There should be two commands for
+      both.
+- [ ] And when opening some directory there should be notes at the top, followed
+      by a line of -'s, then a couple of lines containing single dots, then the
+      same line with -'s, and the list of files in the directory. The list of
+      files with the header isn't contained in the _ file, instead it's placed
+      there temporarily, which is cleared with each :w command, and written with
+      each directory opening.
+- [ ] If the line after the header is edited then don't clear that particular
+      line.  To determine whether it's edited or not the amount of words in the
+      line could be compared. If it's 1 then the line is not edited, if more
+      then it is and should be written to the file. Just move it right before
+      the header before saving.
+- [ ] When opening a directory it should open a file called _ that is a
+      directory description, it contains short notes and the directory
+      description.
+     
+*file_browser_example*
