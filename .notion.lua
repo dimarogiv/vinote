@@ -55,7 +55,7 @@ go_back = function()
   if vim.fn.filereadable(root .. "/.motion_history") > 0 and #vim.fn.readfile(root .. "/.motion_history") > 0 then
     pathlist = vim.fn.readfile(root .. "/.motion_history")
     write_log("len(/.motion_history) = " .. #pathlist)
-    vim.fn.remove(pathlist, -1)
+    table.remove(pathlist, #pathlist)
   else
     write_log("pathlist = [/]")
     pathlist = {"/"}
