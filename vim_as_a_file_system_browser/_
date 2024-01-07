@@ -17,6 +17,9 @@ The idea: vim should be able to browse all of the file system.
 - [ ] make a command for going forward in history
 - [ ] make it open the context of cword file inside the current note, just below
       the cursor
+- [ ] make a client for accessing a remote note system based on vim
+- [ ] make a client for accessing a remote note system for android
+- [ ] make the possibility to display site's titles based on links in the file
 
 Notion: 
 - [x] while editing notes it saves repeatedly. 

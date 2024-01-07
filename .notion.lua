@@ -37,7 +37,7 @@ wgo_to_note = function(path)
 end
 
 remove = function(path)
-  local handle = io.popen("stat " .. vim.fn.expand[["<cword>"]] .. " | grep 'symbolic link'")
+  local handle = io.popen("stat " .. vim.fn.expand([[<cword>]]) .. " | grep 'symbolic link'")
   local output = handle:read("*a")
   handle:close()
   local is_symbolic_link = #output
