@@ -120,12 +120,13 @@ end
 
 rename = function()
   local new_name = vim.fn.expand([[%:p:h]]) .. "/" .. vim.fn.expand([[<cword>]])
-  vim.cmd.execute("normal :!mv " .. old_filename .. " " .. new_name .. "<CR>")
+  io.popen("mv " .. old_filename .. " " .. new_name)
+  print("Renamed " .. vim.fn.fnamemodify(old_filename, ":.:t") .. " -> " .. vim.fn.fnamemodify(new_name, ":.:t"))
 end
 
 choose = function()
-  old_filename = vim.fn.expand([[%:p:h"]]) .. "/" .. vim.fn.expand([[<cword]])
-  vim.fn.echo(old_filename)
+  old_filename = vim.fn.expand([[%:p:h"]]) .. "/" .. vim.fn.expand([[<cword>]])
+  print(old_filename)
 end
 
 go_search_result = function(id, result)
