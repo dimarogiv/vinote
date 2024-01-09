@@ -135,6 +135,34 @@ go_search_result = function(id, result)
   vim.fn.search(pattern)
 end
 
+popup_menu = function(list)
+  local buf = vim.api.nvim_create_buf(nolisted, scratch)
+  local win_parameters = {
+    relative = 'win',
+    row = 3,
+    col = 3,
+    width = 74,
+    height = 40,
+    style = 'minimal'
+  }
+  local win = vim.api.nvim_open_win(buf, false, win_parameters)
+  vim.api.nvim_buf_call(buf, function()
+
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, {list})
+
+    local ns
+    ns = vim.on_key(function(key)
+      if(key == 'k') then
+        vim.api.nvim_win_close(win, true)
+      end
+    end)
+
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+
+  end)
+  print("the function finished")
+end
+
 search_note = function()
   vim.fn.inputsave()
   pattern = vim.fn.input("Search: ")

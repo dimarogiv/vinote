@@ -49,6 +49,7 @@ Notion:
 - [ ] write tests
 - [x] make it write motion history specifying paths starting with the notion
       root
+- [ ] restrict opening an another instance of `note`
 
 File browser: 
 - [ ] while edititng files it should be saved explicitly, but when not
