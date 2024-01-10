@@ -129,38 +129,49 @@ choose = function()
   print(old_filename)
 end
 
-go_search_result = function(id, result)
-  local path = vim.fn.split(listtogo[result-1], ":\t")[1]
-  wgo_to_note(path)
+go_search_result = function(res)
+  write_log([[listtogo[res] = ]] .. listtogo[res])
+  local path = vim.fn.split(listtogo[res], ":\\t")[1]
+  write_log([[path = ]] .. path)
+  if string.sub(path, 1, 1) == '/' then
+    wgo_to_note(root .. path)
+  end
   vim.fn.search(pattern)
 end
 
-popup_menu = function(list)
-  local buf = vim.api.nvim_create_buf(nolisted, scratch)
+choose_string = function()
+  local pos = vim.fn.getcurpos()
+  return pos[2]
+end
+
+popup_menu_create = function(list, fun_before, fun_after, activation_key)
+  popup_buf = vim.api.nvim_create_buf(true, true)
   local win_parameters = {
     relative = 'win',
     row = 3,
     col = 3,
     width = 74,
     height = 40,
-    style = 'minimal'
+    style = 'minimal',
+    border = 'rounded',
+    noautocmd = true,
   }
-  local win = vim.api.nvim_open_win(buf, false, win_parameters)
-  vim.api.nvim_buf_call(buf, function()
+  popup_win = vim.api.nvim_open_win(popup_buf, true, win_parameters)
 
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, {list})
+  vim.api.nvim_buf_set_lines(popup_buf, 0, -1, false, list)
+  print(popup_buf)
 
-    local ns
-    ns = vim.on_key(function(key)
-      if(key == 'k') then
-        vim.api.nvim_win_close(win, true)
-      end
-    end)
+  local ns = vim.api.nvim_create_namespace("Chooser_ns")
+  vim.on_key(function(key)
+    if key == activation_key and vim.api.nvim_win_get_config(0).relative ~= '' then
+      local res = fun_before()
+      vim.api.nvim_win_close(0, true)
+      vim.api.nvim_buf_delete(0, {force = true})
+      print(res)
+      fun_after(res)
+    end
+  end, ns)
 
-    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
-
-  end)
-  print("the function finished")
 end
 
 search_note = function()
@@ -176,7 +187,7 @@ search_note = function()
   for item=1,#listtoshow,1 do
     listtoshow[item] = vim.fn.split(list[item], root)[1]
   end
-  vim.cmd([[call popup_menu(listtoshow, #{callback: "GoSearchResult"})]])
+  popup_menu_create(listtoshow, choose_string, go_search_result, '\r')
 end
 
 add_extras = function()
