@@ -135,6 +135,8 @@ go_search_result = function(res)
   write_log([[path = ]] .. path)
   if string.sub(path, 1, 1) == '/' then
     wgo_to_note(root .. path)
+  else
+    wgo_to_note(root)
   end
   vim.fn.search(pattern)
 end
