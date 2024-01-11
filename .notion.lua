@@ -1,6 +1,7 @@
 local root = os.getenv("NOTION_DIR_LUA")
 local history_len = 100
-local logfile = "/dev/pts/1"
+--local logfile = "/dev/pts/1"
+local logfile = "/dev/null"
 vim = vim
 
 write_log = function(text)
@@ -208,7 +209,8 @@ end
 
 link = function()
   local link_name = vim.fn.expand([[%:p:h]]) .. "/" .. vim.fn.expand([[<cword>]])
-  vim.cmd.execute("normal :!ln -s " .. old_filename .. " " .. link_name .. "<CR>")
+  io.popen("ln -s " .. old_filename .. " " .. link_name)
+  print(old_filename .. " -> " .. link_name)
 end
 
 vim.keymap.set('n', 'er', function() remove() end)

@@ -50,6 +50,9 @@ Notion:
 - [x] make it write motion history specifying paths starting with the notion
       root
 - [ ] restrict opening an another instance of `note`
+## issues
+- [x] link() function fails
+- [ ] go_home function fails, error: attempt to concatenate path=nil
 
 File browser: 
 - [ ] while edititng files it should be saved explicitly, but when not
