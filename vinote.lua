@@ -2,7 +2,7 @@ local root = os.getenv("NOTION_DIR_LUA")
 local cache_dir = os.getenv("HOME") .. "/.cache/vinote"
 local history_len = 100
 --local logfile = "/dev/pts/1"
-local logfile = "/dev/pts/1"
+local logfile = "/dev/null"
 vim = vim
 
 write_log = function(text)
