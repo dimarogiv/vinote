@@ -1,7 +1,8 @@
 local root = os.getenv("NOTION_DIR_LUA")
+local cache_dir = os.getenv("HOME") .. "/.cache/vinote"
 local history_len = 100
 --local logfile = "/dev/pts/1"
-local logfile = "/dev/null"
+local logfile = "/dev/pts/1"
 vim = vim
 
 write_log = function(text)
@@ -53,15 +54,15 @@ end
 
 go_back = function()
   local pathlist = {}
-  if vim.fn.filereadable(root .. "/.motion_history") > 0 and #vim.fn.readfile(root .. "/.motion_history") > 0 then
-    pathlist = vim.fn.readfile(root .. "/.motion_history")
-    write_log("len(/.motion_history) = " .. #pathlist)
+  if vim.fn.filereadable(cache_dir .. '/motion_history') > 0 and #vim.fn.readfile(cache_dir .. '/motion_history') > 0 then
+    pathlist = vim.fn.readfile(cache_dir .. '/motion_history')
+    write_log("len(motion_history) = " .. #pathlist)
     table.remove(pathlist, #pathlist)
   else
     write_log("pathlist = [/]")
     pathlist = {"/"}
   end
-  vim.fn.writefile(pathlist, root .. "/.motion_history")
+  vim.fn.writefile(pathlist, cache_dir .. '/motion_history')
   local path = pathlist[#pathlist]
   if path == "/" then
     path = root
@@ -79,10 +80,10 @@ write_motion_history = function()
   else
     path = "/"
   end
-  write_log("Written to /.motion_history: " .. path)
+  write_log('Written to ' .. cache_dir .. '/motion_history: ' .. path)
   local pathlist
-  if vim.fn.filereadable(root .. "/.motion_history") > 0 then
-    pathlist = vim.fn.readfile(root .. "/.motion_history")
+  if vim.fn.filereadable(cache_dir .. '/motion_history') > 0 then
+    pathlist = vim.fn.readfile(cache_dir .. '/motion_history')
     pathlist = vim.fn.add(pathlist, path)
   else
     pathlist = {}
@@ -90,21 +91,21 @@ write_motion_history = function()
   if #pathlist > history_len then
     table.move(pathlist, #pathlist-100, #pathlist, 1, pathlist)
   end
-  vim.fn.writefile(pathlist, root .. "/.motion_history")
+  vim.fn.writefile(pathlist, cache_dir .. '/motion_history')
 end
 
 restore_path = function()
   local pathlist
   local path
-  local file_exists = vim.fn.filereadable(root .. "/.motion_history")
+  local file_exists = vim.fn.filereadable(cache_dir .. '/motion_history')
   local file_empty
   if file_exists > 0 then
     write_log("file_exists > 0")
-    file_empty = #vim.fn.readfile(root .. "/.motion_history") == 0
+    file_empty = #vim.fn.readfile(cache_dir .. '/motion_history') == 0
   end
   if file_exists > 0 and not file_empty then
     write_log("file_exists = true, file_empty == 0")
-    pathlist = vim.fn.readfile(root .. "/.motion_history")
+    pathlist = vim.fn.readfile(cache_dir .. '/motion_history')
     path = pathlist[#pathlist]
   else
     write_log("path = '/'")
@@ -213,6 +214,14 @@ link = function()
   print(old_filename .. " -> " .. link_name)
 end
 
+prepare_cache_dir = function()
+  local err = os.execute('ls -d ' .. cache_dir)
+  write_log('ls -d ' .. cache_dir .. 'returns ' .. err)
+  if err == 512 then
+    os.execute('mkdir -p ' .. cache_dir)
+  end
+end
+
 vim.keymap.set('n', 'er', function() remove() end)
 vim.keymap.set('n', 'ef', function() wgo_to_note(vim.fn.expand([[<cword>]])) end)
 vim.keymap.set('n', 'eu', function() wgo_to_note(vim.fn.expand([[%:p:h:h]])) end)
@@ -231,6 +240,7 @@ vim.api.nvim_clear_autocmds({event = "TextChangedI"})
 vim.api.nvim_create_autocmd({"ExitPre", "QuitPre"}, {callback = quit})
 
 write_log("root: " .. root)
+prepare_cache_dir()
 restore_path()
 vim.opt.syntax = "markdown"
 vim.opt.iskeyword:append({ "/", "."})

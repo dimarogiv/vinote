@@ -20,6 +20,12 @@ The idea: vim should be able to browse all of the file system.
 - [ ] make a client for accessing a remote note system based on vim
 - [ ] make a client for accessing a remote note system for android
 - [ ] make the possibility to display site's titles based on links in the file
+- [ ] add a separate function for removing the root of any note path
+- [ ] move the plugin into the directory for plugins (and write a Makefile or
+      installation script)
+- [x] move the history of movements into ~/.cache/vinote directory
+- [ ] break the code into several files: one of them should be config, another
+      one for general functions, and another one for fundamental functions
 
 Notion: 
 - [x] while editing notes it saves repeatedly. 
