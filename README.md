@@ -55,18 +55,10 @@ make install
 Open your `~/.bashrc` file in any text editor and add this in the beginning:
 ```
 export VINOTE_ROOT_DIR="/path/to/your/notes"
-alias note='nvim -c"lua require(\"vinote.vinote\")'
+alias note='nvim -c"lua require(\"vinote.vinote\")"'
 ```
 
-On the command line:
-```
-$ source ~/.bashrc
-$ mkdir -p $NOTION_DIR
-$ cd $NOTION_DIR
-$ git clone https://github.com/dimarogiv/vinote.git
-```
-
-Now, to launch it just type `note` on the command line.
+Now, to launch it type `note` on the command line.
 
 ## Current status
 
