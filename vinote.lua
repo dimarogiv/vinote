@@ -1,4 +1,4 @@
-local root = os.getenv("NOTION_DIR_LUA")
+local root = os.getenv("VINOTE_ROOT_DIR")
 local cache_dir = os.getenv("HOME") .. "/.cache/vinote"
 local history_len = 100
 --local logfile = "/dev/pts/1"
@@ -230,7 +230,7 @@ vim.keymap.set('n', 'en', function() rename() end)
 vim.keymap.set('n', 'es', function() search_note() end)
 vim.keymap.set('n', 'ea', function() add_extras() end)
 vim.keymap.set('n', 'eo', function() remove_extras() end)
-vim.keymap.set('n', 'eh', function() wgo_to_note() end)
+vim.keymap.set('n', 'eh', function() wgo_to_note(root) end)
 vim.keymap.set('n', 'eb', function() go_back() end)
 vim.keymap.set('n', 'el', function() link() end)
 
