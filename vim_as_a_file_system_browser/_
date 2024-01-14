@@ -26,6 +26,12 @@ The idea: vim should be able to browse all of the file system.
 - [x] move the history of movements into ~/.cache/vinote directory
 - [ ] break the code into several files: one of them should be config, another
       one for general functions, and another one for fundamental functions
+- [x] replace the on_key() in popup_window_create() by assigning to a global
+      variable which type of window it is(popup_menu), which can be used by a
+      separate function in if statement if window_type == "popup_menu" and key
+      == "\r" then close the window and buffer
+- [x] on_key() function is assigned on startup
+- [ ] make a hotkey for local search rather than recursive
 
 Notion: 
 - [x] while editing notes it saves repeatedly. 
@@ -59,7 +65,8 @@ Notion:
 - [ ] make a hotkey for completeng the task (adding the 'x' between '[ ]')
 ## issues
 - [x] link() function fails
-- [ ] go_home function fails, error: attempt to concatenate path=nil
+- [x] go_home function fails, error: attempt to concatenate path=nil
+- [ ] searching through the buffer after recursive search doesn't work
 
 File browser: 
 - [ ] while edititng files it should be saved explicitly, but when not

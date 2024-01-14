@@ -148,7 +148,7 @@ choose_string = function()
   return pos[2]
 end
 
-popup_menu_create = function(list, fun_before, fun_after, activation_key)
+popup_menu_create = function(list)
   popup_buf = vim.api.nvim_create_buf(true, true)
   local win_parameters = {
     relative = 'win',
@@ -161,21 +161,22 @@ popup_menu_create = function(list, fun_before, fun_after, activation_key)
     noautocmd = true,
   }
   popup_win = vim.api.nvim_open_win(popup_buf, true, win_parameters)
-
   vim.api.nvim_buf_set_lines(popup_buf, 0, -1, false, list)
-  print(popup_buf)
+  window_type = "popup_menu"
+end
 
+init_keypress_handler = function()
   local ns = vim.api.nvim_create_namespace("Chooser_ns")
+  window_type="regular_note"
   vim.on_key(function(key)
-    if key == activation_key and vim.api.nvim_win_get_config(0).relative ~= '' then
-      local res = fun_before()
+    if key == '\r' and window_type == 'popup_menu' then
+      local res = choose_string()
       vim.api.nvim_win_close(0, true)
       vim.api.nvim_buf_delete(0, {force = true})
-      print(res)
-      fun_after(res)
+      window_type = 'regular_window'
+      go_search_result(res)
     end
   end, ns)
-
 end
 
 search_note = function()
@@ -191,7 +192,7 @@ search_note = function()
   for item=1,#listtoshow,1 do
     listtoshow[item] = vim.fn.split(list[item], root)[1]
   end
-  popup_menu_create(listtoshow, choose_string, go_search_result, '\r')
+  popup_menu_create(listtoshow)
 end
 
 add_extras = function()
@@ -241,6 +242,7 @@ vim.api.nvim_create_autocmd({"ExitPre", "QuitPre"}, {callback = quit})
 
 write_log("root: " .. root)
 prepare_cache_dir()
+init_keypress_handler()
 restore_path()
 vim.opt.syntax = "markdown"
 vim.opt.iskeyword:append({ "/", "."})
