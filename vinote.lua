@@ -1,8 +1,8 @@
 local root = os.getenv("VINOTE_ROOT_DIR")
 local cache_dir = os.getenv("HOME") .. "/.cache/vinote"
 local history_len = 100
---local logfile = "/dev/pts/1"
-local logfile = "/dev/null"
+local logfile = "/dev/pts/1"
+--local logfile = "/dev/null"
 vim = vim
 
 write_log = function(text)
@@ -140,7 +140,10 @@ go_search_result = function(res)
   else
     wgo_to_note(root)
   end
-  vim.fn.search(pattern)
+  vim.fn.setpos(".", {0, vim.fn.search(pattern), 0, true})
+  if vim.fn.line(".") < vim.fn.line("$") then
+    vim.cmd.normal("k")
+  end
 end
 
 choose_string = function()

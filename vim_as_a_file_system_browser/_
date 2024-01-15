@@ -66,7 +66,8 @@ Notion:
 ## issues
 - [x] link() function fails
 - [x] go_home function fails, error: attempt to concatenate path=nil
-- [ ] searching through the buffer after recursive search doesn't work
+- [x] searching through the buffer after recursive search doesn't work
+- [ ] unable to set cursor pos to the first line after searching
 
 File browser: 
 - [ ] while edititng files it should be saved explicitly, but when not
