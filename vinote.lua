@@ -236,6 +236,7 @@ update_file = function()
 end
 
 quit = function()
+  io.popen("rmdir /tmp/vinote_running")
   vim.cmd.execute([[normal :q!<CR>]])
 end
 
@@ -253,6 +254,25 @@ prepare_cache_dir = function()
   end
 end
 
+initialization = function()
+  if vim.fn.isdirectory("/tmp/vinote_running") > 0 then
+    write_log("another instance of vinote is opened! Aborted.")
+    vim.cmd("q!")
+  else
+    vim.fn.mkdir("/tmp/vinote_running")
+  end
+  write_log("root: " .. root)
+  prepare_cache_dir()
+  init_keypress_handler()
+  restore_path()
+  vim.opt.syntax = "markdown"
+  vim.opt.iskeyword:append({ "/", "."})
+end
+
+
+
+initialization()
+
 vim.keymap.set('n', 'er', function() remove() end)
 vim.keymap.set('n', 'ef', function() wgo_to_note(vim.fn.expand([[<cword>]])) end)
 vim.keymap.set('n', 'eu', function() wgo_to_note(vim.fn.expand([[%:p:h:h]])) end)
@@ -269,10 +289,3 @@ vim.api.nvim_create_autocmd("BufRead", {command = "set syntax=markdown"})
 vim.api.nvim_create_autocmd({"TextChanged", "TextChangedT", "ModeChanged"}, {callback = update_file})
 vim.api.nvim_clear_autocmds({event = "TextChangedI"})
 vim.api.nvim_create_autocmd({"ExitPre", "QuitPre"}, {callback = quit})
-
-write_log("root: " .. root)
-prepare_cache_dir()
-init_keypress_handler()
-restore_path()
-vim.opt.syntax = "markdown"
-vim.opt.iskeyword:append({ "/", "."})

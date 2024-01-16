@@ -59,7 +59,7 @@ Notion:
 - [ ] write tests
 - [x] make it write motion history specifying paths starting with the notion
       root
-- [ ] restrict opening an another instance of `note`
+- [x] restrict opening an another instance of `note`
 - [ ] make a hotkey for completeng the task (adding the 'x' between '[ ]')
 ## issues
 - [x] link() function fails
