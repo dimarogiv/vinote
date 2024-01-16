@@ -209,11 +209,11 @@ init_keypress_handler = function()
   end, ns)
 end
 
-search_note = function()
+search_note = function(search_root)
   vim.fn.inputsave()
   pattern = vim.fn.input("Search: ")
   vim.fn.inputrestore()
-  list = vim.fn.systemlist("grep -R --exclude='.*' \'" .. pattern .. "\' " .. root .. " 2>&1 | grep -v 'grep:' | sed 's/\\/_:/:\\t\\t/'")
+  list = vim.fn.systemlist("grep -R --exclude='.*' \'" .. pattern .. "\' " .. search_root .. " 2>&1 | grep -v 'grep:' | sed 's/\\/_:/:\\t\\t/'")
   if #list == 0 then
     return
   end
@@ -278,12 +278,13 @@ vim.keymap.set('n', 'ef', function() wgo_to_note(vim.fn.expand([[<cword>]])) end
 vim.keymap.set('n', 'eu', function() wgo_to_note(vim.fn.expand([[%:p:h:h]])) end)
 vim.keymap.set('n', 'ec', function() choose() end)
 vim.keymap.set('n', 'en', function() rename() end)
-vim.keymap.set('n', 'es', function() search_note() end)
+vim.keymap.set('n', 'es', function() search_note(root) end)
 vim.keymap.set('n', 'ea', function() add_extras() end)
 vim.keymap.set('n', 'eo', function() remove_extras() end)
 vim.keymap.set('n', 'eh', function() wgo_to_note(root) end)
 vim.keymap.set('n', 'eb', function() go_back() end)
 vim.keymap.set('n', 'el', function() link() end)
+vim.keymap.set('n', 'et', function() search_note(vim.fn.expand([[%:p:h]])) end)
 
 vim.api.nvim_create_autocmd("BufRead", {command = "set syntax=markdown"})
 vim.api.nvim_create_autocmd({"TextChanged", "TextChangedT", "ModeChanged"}, {callback = update_file})
