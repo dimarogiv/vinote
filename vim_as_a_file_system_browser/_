@@ -48,7 +48,7 @@ Notion:
 - [ ] if some folder doesn't have any text in _ delete it automatically when
       moving somewhere else
 - [x] restore textwidth
-- [ ] make Rename() function remove the current directory after
+- [x] make Rename() function remove the current directory after
       popup_filter_yes_no if it currently exists before inserting new one
 - [ ] make a schedule folder where it moves some tasks to the *../../today* folder
       if the proper time came, or the reminders field, perhaps at the top of the

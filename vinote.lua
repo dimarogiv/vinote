@@ -120,8 +120,30 @@ restore_path = function()
   go_to_note(path)
 end
 
+yes_no_prompt = function(prompt)
+  local responce = vim.fn.input(prompt .. [[ [yes/no]: ]])
+  local ret
+  while not (ret == true or ret == false) do
+    if responce == 'yes' or responce == 'y' then
+      ret = true
+    elseif responce == 'no' or responce == 'n' then
+      ret = false
+    else
+      responce = vim.fn.input(prompt .. [[ [yes/no]: ]])
+    end
+  end
+  return ret
+end
+
 rename = function()
   local new_name = vim.fn.expand([[%:p:h]]) .. "/" .. vim.fn.expand([[<cword>]])
+  if vim.fn.isdirectory(new_name) > 0  then
+    if yes_no_prompt(new_name .. " already exists. Replace it?") == true then
+      io.popen("rm -rf " .. new_name)
+    else
+      return
+    end
+  end
   io.popen("mv " .. old_filename .. " " .. new_name)
   print("Renamed " .. vim.fn.fnamemodify(old_filename, ":.:t") .. " -> " .. vim.fn.fnamemodify(new_name, ":.:t"))
 end
