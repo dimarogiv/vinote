@@ -269,6 +269,21 @@ initialization = function()
   vim.opt.iskeyword:append({ "/", "."})
 end
 
+create_virtual_text = function(text, line, col)
+  opts = {
+    id = 1,
+    virt_text_pos = "inline",
+    virt_text = {
+      {text, "Comment"},
+      {text, "IncSearch"}
+    },
+    end_col = 3,
+  }
+  ns = vim.api.nvim_create_namespace("virt_text")
+  vim.api.nvim_buf_set_extmark(0, ns, line, col, opts)
+end
+
+
 
 
 initialization()

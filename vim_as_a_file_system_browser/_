@@ -1,6 +1,6 @@
 The idea: vim should be able to browse all of the file system.
 
-- [ ] When typing ef on some word it goes to that file or folder. If it's a
+- [x] When typing ef on some word it goes to that file or folder. If it's a
       folder it opens _ there, if it's a file it opens that file.
 - [ ] *header*
 - [ ] the path should be added at the top of each window (requires patching)
@@ -8,7 +8,7 @@ The idea: vim should be able to browse all of the file system.
       could be vertical pipes
 - [ ] reassign the control keys to something more intuitive and more accessible,
       including quit key
-- [ ] make every note be read as an .md file
+- [x] make every note be read as an .md file
 - [x] when searching for a keyword exclude the dot files
 - [x] when searching for a keyword and clicking ESC it cancels without going
       anywhere
