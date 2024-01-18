@@ -270,16 +270,18 @@ initialization = function()
 end
 
 create_virtual_text = function(text, line, col)
-  opts = {
+  local hl_type = 'Comment'
+  local lines = {}
+  for i = 1, #text, 1 do
+    table.insert(lines, {{text[i], hl_type}})
+  end
+  local opts = {
     id = 1,
-    virt_text_pos = "inline",
-    virt_text = {
-      {text, "Comment"},
-      {text, "IncSearch"}
-    },
+    virt_lines = lines,
+    virt_lines_above = true,
     end_col = 3,
   }
-  ns = vim.api.nvim_create_namespace("virt_text")
+  local ns = vim.api.nvim_create_namespace("virt_text")
   vim.api.nvim_buf_set_extmark(0, ns, line, col, opts)
 end
 
