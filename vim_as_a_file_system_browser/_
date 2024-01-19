@@ -41,7 +41,10 @@ Notion:
       reads the word and renames the folder to it.
 - [x] Also, make a function for searching for patterns throughout the note
       system, it can be done with the help of ack or grep -R.
-- [ ] And make the notes be able to open the child note inside the current note.
+- [x] And make the notes be able to open the child note inside the current note.
+- [ ] Make the notes be able to open multiple and all child notes in the current
+      one.
+- [ ] Make it possible to collaps the expanded notes.
 - [x] Make the possibility to insert links inside the notes
 - [x] Make the possibility to move some notes inside others
 - [x] add "home", and "go back by history" keys
@@ -61,6 +64,9 @@ Notion:
       root
 - [x] restrict opening an another instance of `note`
 - [ ] make a hotkey for completeng the task (adding the 'x' between '[ ]')
+- [ ] make the sorting of todo lists feature so that it can show non-done tasks
+      first
+
 ## issues
 - [x] link() function fails
 - [x] go_home function fails, error: attempt to concatenate path=nil

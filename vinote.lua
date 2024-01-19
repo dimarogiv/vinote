@@ -279,10 +279,17 @@ create_virtual_text = function(text, line, col)
     id = 1,
     virt_lines = lines,
     virt_lines_above = true,
-    end_col = 3,
   }
   local ns = vim.api.nvim_create_namespace("virt_text")
   vim.api.nvim_buf_set_extmark(0, ns, line, col, opts)
+end
+
+expand_note = function()
+  local lines = {}
+  for line in io.lines(vim.fn.expand([[<cword>]]) .. "/_") do
+    lines[#lines + 1] = line
+  end
+  create_virtual_text(lines, vim.fn.getcurpos()[2], vim.fn.getcurpos()[1])
 end
 
 
@@ -302,6 +309,7 @@ vim.keymap.set('n', 'eh', function() wgo_to_note(root) end)
 vim.keymap.set('n', 'eb', function() go_back() end)
 vim.keymap.set('n', 'el', function() link() end)
 vim.keymap.set('n', 'et', function() search_note(vim.fn.expand([[%:p:h]])) end)
+vim.keymap.set('n', 'ex', function() expand_note() end)
 
 vim.api.nvim_create_autocmd("BufRead", {command = "set syntax=markdown"})
 vim.api.nvim_create_autocmd({"TextChanged", "TextChangedT", "ModeChanged"}, {callback = update_file})
