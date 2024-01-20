@@ -31,6 +31,7 @@ go_to_note = function(path)
   else
     write_log("error: " .. path .. ": the path is unaccessible!" .. ": match() returns: " .. vim.fn.match(path, root))
   end
+  init_ns()
 end
 
 wgo_to_note = function(path)
@@ -191,7 +192,7 @@ popup_menu_create = function(list)
 end
 
 init_keypress_handler = function()
-  local ns = vim.api.nvim_create_namespace("Chooser_ns")
+  ns[3] = vim.api.nvim_create_namespace("Chooser_ns")
   window_type="regular_note"
   vim.on_key(function(key)
     if key == '\r' and window_type == 'popup_menu' then
@@ -206,7 +207,7 @@ init_keypress_handler = function()
       vim.api.nvim_buf_delete(popup_buf, {force = true})
       window_type = 'regular_window'
     end
-  end, ns)
+  end, ns[3])
 end
 
 search_note = function(search_root)
@@ -263,10 +264,18 @@ initialization = function()
   end
   write_log("root: " .. root)
   prepare_cache_dir()
+  init_ns()
   init_keypress_handler()
   restore_path()
   vim.opt.syntax = "markdown"
   vim.opt.iskeyword:append({ "/", "."})
+end
+
+init_ns = function()
+  ns = {}
+  table.insert(ns, {})
+  table.insert(ns, {})
+  table.insert(ns, 0)
 end
 
 create_virtual_text = function(text, line, col)
@@ -280,8 +289,8 @@ create_virtual_text = function(text, line, col)
     virt_lines = lines,
     virt_lines_above = true,
   }
-  local ns = vim.api.nvim_create_namespace("virt_text")
-  vim.api.nvim_buf_set_extmark(0, ns, line, col, opts)
+  ns[1][vim.fn.getcurpos()[2]] = vim.api.nvim_create_namespace(tostring(vim.fn.getcurpos()[2]))
+  ns[2][vim.fn.getcurpos()[2]] = vim.api.nvim_buf_set_extmark(0, ns[1][vim.fn.getcurpos()[2]], line, col, opts)
 end
 
 expand_note = function()
@@ -292,7 +301,29 @@ expand_note = function()
   create_virtual_text(lines, vim.fn.getcurpos()[2], vim.fn.getcurpos()[1])
 end
 
+collapse_note = function()
+  vim.api.nvim_buf_del_extmark(0, ns[1][vim.fn.getcurpos()[2]], ns[2][vim.fn.getcurpos()[2]])
+end
 
+expand_all_notes = function()
+  vim.fn.search('*\\([a-z]\\|_\\)\\**', 'cn')
+  vim.cmd.normal([[/*\\([a-z]\\|_\\)\\**]])
+  local count = vim.fn.searchcount({recompute = 1})
+  for i = 1, 99, 1 do
+    expand_note()
+    vim.fn.search('*\\([a-z]\\|_\\)\\**')
+  end
+end
+
+collapse_all_notes = function()
+  vim.fn.search('*\\([a-z]\\|_\\)\\**', 'cn')
+  vim.cmd.normal([[/*\\([a-z]\\|_\\)\\**]])
+  local count = vim.fn.searchcount({recompute = 1})
+  for i = 1, 99, 1 do
+    collapse_note()
+    vim.fn.search('*\\([a-z]\\|_\\)\\**')
+  end
+end
 
 
 initialization()
@@ -309,7 +340,10 @@ vim.keymap.set('n', 'eh', function() wgo_to_note(root) end)
 vim.keymap.set('n', 'eb', function() go_back() end)
 vim.keymap.set('n', 'el', function() link() end)
 vim.keymap.set('n', 'et', function() search_note(vim.fn.expand([[%:p:h]])) end)
-vim.keymap.set('n', 'ex', function() expand_note() end)
+vim.keymap.set('n', 'evx', function() expand_note() end)
+vim.keymap.set('n', 'evc', function() collapse_note() end)
+vim.keymap.set('n', 'evax', function() expand_all_notes() end)
+vim.keymap.set('n', 'evac', function() collapse_all_notes() end)
 
 vim.api.nvim_create_autocmd("BufRead", {command = "set syntax=markdown"})
 vim.api.nvim_create_autocmd({"TextChanged", "TextChangedT", "ModeChanged"}, {callback = update_file})

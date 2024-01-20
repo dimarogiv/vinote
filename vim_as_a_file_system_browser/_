@@ -30,6 +30,9 @@ The idea: vim should be able to browse all of the file system.
       == "\r" then close the window and buffer
 - [x] on_key() function is assigned on startup
 - [x] make a hotkey for local search rather than recursive
+- [ ] listing through notes inside current note
+- [ ] jumping through notes links inside the current buffer
+- [ ] add the search for the note by a file, not text feature with `find`
 
 Notion: 
 - [x] while editing notes it saves repeatedly. 
@@ -42,9 +45,9 @@ Notion:
 - [x] Also, make a function for searching for patterns throughout the note
       system, it can be done with the help of ack or grep -R.
 - [x] And make the notes be able to open the child note inside the current note.
-- [ ] Make the notes be able to open multiple and all child notes in the current
+- [x] Make the notes be able to open multiple and all child notes in the current
       one.
-- [ ] Make it possible to collaps the expanded notes.
+- [x] Make it possible to collaps the expanded notes.
 - [x] Make the possibility to insert links inside the notes
 - [x] Make the possibility to move some notes inside others
 - [x] add "home", and "go back by history" keys
@@ -58,7 +61,7 @@ Notion:
       home page.
 - [ ] make *dynamic_tables*
 - [x] make a link function that works with `ln` command
-- [ ] implement logging system
+- [x] implement logging system
 - [ ] write tests
 - [x] make it write motion history specifying paths starting with the notion
       root
