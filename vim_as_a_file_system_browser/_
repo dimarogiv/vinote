@@ -22,7 +22,7 @@ The idea: vim should be able to browse all of the file system.
 - [x] move the plugin into the directory for plugins (and write a Makefile or
       installation script)
 - [x] move the history of movements into ~/.cache/vinote directory
-- [ ] break the code into several files: one of them should be config, another
+- [x] break the code into several files: one of them should be config, another
       one for general functions, and another one for fundamental functions
 - [x] replace the on_key() in popup_window_create() by assigning to a global
       variable which type of window it is(popup_menu), which can be used by a
@@ -33,6 +33,7 @@ The idea: vim should be able to browse all of the file system.
 - [ ] listing through notes inside current note
 - [ ] jumping through notes links inside the current buffer
 - [ ] add the search for the note by a file, not text feature with `find`
+- [ ] make config.lua richer for configuration
 
 Notion: 
 - [x] while editing notes it saves repeatedly. 
