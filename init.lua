@@ -59,11 +59,11 @@ init_ns = function()
 end
 
 initialize = function()
-  if vim.fn.isdirectory("/tmp/vinote_running") > 0 then
+  if vim.fn.isdirectory("/tmp/vinote") > 0 then
     write_log("another instance of vinote is opened! Aborted.")
     vim.cmd("q!")
   else
-    vim.fn.mkdir("/tmp/vinote_running")
+    vim.fn.mkdir("/tmp/vinote")
   end
   write_log("root: " .. root)
   prepare_cache_dir()
@@ -79,7 +79,7 @@ update_file = function()
 end
 
 quit = function()
-  io.popen("rmdir /tmp/vinote_running")
+  io.popen("rm -rf /tmp/vinote")
   vim.cmd.execute([[normal :q!<CR>]])
 end
 

@@ -8,5 +8,4 @@ install:
 	cp management.lua ~/.config/nvim/lua/vinote
 	cp navigation.lua ~/.config/nvim/lua/vinote
 	cp search.lua ~/.config/nvim/lua/vinote
-	cp vinote.lua ~/.config/nvim/lua/vinote
 	cp visual.lua ~/.config/nvim/lua/vinote
