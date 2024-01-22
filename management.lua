@@ -35,3 +35,17 @@ choose = function()
   old_filename = vim.fn.expand([[%:p:h"]]) .. "/" .. vim.fn.expand([[<cword>]])
   print(old_filename)
 end
+
+complete_task = function()
+  local pos = vim.fn.getcurpos()
+  vim.fn.search('- \\[ \\] ', 'bcW')
+  vim.cmd.normal('3lciwx')
+  vim.fn.setpos('.', pos)
+end
+
+uncomplete_task = function()
+  local pos = vim.fn.getcurpos()
+  vim.fn.search('- \\[x\\] ', 'bcW')
+  vim.cmd.normal('3lciw ')
+  vim.fn.setpos('.', pos)
+end
