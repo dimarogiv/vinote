@@ -1,8 +1,9 @@
+
 The idea: vim should be able to browse all of the file system.
 
 - [x] When typing ef on some word it goes to that file or folder. If it's a
       folder it opens _ there, if it's a file it opens that file.
-- [ ] *header*
+- [ ] format *header* beautifully
 - [ ] the path should be added at the top of each window (requires patching)
 - [ ] find some beautiful replacement for asterisks for denoting the files. It
       could be vertical pipes
@@ -34,6 +35,7 @@ The idea: vim should be able to browse all of the file system.
 - [ ] jumping through notes links inside the current buffer
 - [ ] add the search for the note by a file, not text feature with `find`
 - [ ] make config.lua richer for configuration
+- [x] add header that shows where you are
 
 Notion: 
 - [x] while editing notes it saves repeatedly. 
@@ -76,6 +78,7 @@ Notion:
 - [x] go_home function fails, error: attempt to concatenate path=nil
 - [x] searching through the buffer after recursive search doesn't work
 - [ ] unable to set cursor pos to the first line after searching
+- [ ] make the header appear above the first line
 
 File browser: 
 - [ ] while edititng files it should be saved explicitly, but when not

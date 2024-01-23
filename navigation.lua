@@ -1,5 +1,6 @@
 go_to_note = function(path)
   write_log("go_to_note(" .. path .. ")")
+  remove_extras()
   if vim.fn.isdirectory(path) == 0 then
     vim.fn.mkdir(path)
   end
@@ -20,6 +21,7 @@ go_to_note = function(path)
     write_log("error: " .. path .. ": the path is unaccessible!" .. ": match() returns: " .. vim.fn.match(path, root))
   end
   init_ns()
+  add_extras()
 end
 
 wgo_to_note = function(path)
