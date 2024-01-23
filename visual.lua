@@ -80,10 +80,20 @@ add_header = function()
   local path = vim.fn.expand('%:p:h')
   local file = vim.fn.expand('%')
   local lines = {}
-  for line in io.lines(file) do
-    table.insert(lines, line)
+  local f = io.open(file)
+  if f~=nil then
+    io.close(f)
+    for line in io.lines(file) do
+      table.insert(lines, line)
+    end
   end
-  local is_first_line_empty = #lines[1] == 0
+  local is_first_line_empty
+  if lines[1] == nil then
+    is_first_line_empty = 1
+  else
+    is_first_line_empty = #lines[1] == 0
+  end
+  print(is_first_line_empty)
   if not is_first_line_empty then
     local pos = vim.fn.getcurpos()
     vim.cmd.normal('ggO')
@@ -104,7 +114,6 @@ remove_virtual_text = function()
   if ns[1][1] and ns[2][1] then
     vim.api.nvim_buf_del_extmark(0, ns[1][1], ns[2][1])
   end
-  print(ns[2][1])
 end
 
 add_extras = function()
