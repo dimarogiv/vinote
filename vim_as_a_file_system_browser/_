@@ -1,3 +1,4 @@
+                                                                                
 
 The idea: vim should be able to browse all of the file system.
 
@@ -36,6 +37,7 @@ The idea: vim should be able to browse all of the file system.
 - [ ] add the search for the note by a file, not text feature with `find`
 - [ ] make config.lua richer for configuration
 - [x] add header that shows where you are
+- [ ] write the real text under header
 
 Notion: 
 - [x] while editing notes it saves repeatedly. 

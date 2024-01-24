@@ -79,24 +79,25 @@ end
 add_header = function()
   local path = vim.fn.expand('%:p:h')
   local file = vim.fn.expand('%')
-  local lines = {}
+  local file_content = {}
   local f = io.open(file)
   if f~=nil then
     io.close(f)
     for line in io.lines(file) do
-      table.insert(lines, line)
+      table.insert(file_content, line)
     end
   end
   local is_first_line_empty
-  if lines[1] == nil then
+  if file_content[1] == nil then
     is_first_line_empty = 1
   else
-    is_first_line_empty = #lines[1] == 0
+    is_first_line_empty = #file_content[1] == 0
+    is_first_line_empty = file_content[1] == '                                                                                '
   end
-  print(is_first_line_empty)
   if not is_first_line_empty then
     local pos = vim.fn.getcurpos()
     vim.cmd.normal('ggO')
+    vim.cmd.normal('80i ')
     vim.fn.setpos('.', pos)
     vim.cmd.normal('j')
   end
@@ -106,7 +107,20 @@ add_header = function()
     vim.fn.expand("%:p:h:t"),
     '',
   }
-  create_virtual_text(text, 1, 0, 'Comment')
+
+  local lines = {}
+  for i = 2, #text, 1 do
+    table.insert(lines, {{text[i], 'Comment'}})
+  end
+  local opts = {
+    id = 1,
+    virt_lines = lines,
+    virt_lines_above = false,
+    virt_text_pos = 'overlay',
+    virt_text = {{text[1], 'Comment'}},
+  }
+  ns[1][1] = vim.api.nvim_create_namespace(tostring(1))
+  ns[2][1] = vim.api.nvim_buf_set_extmark(0, ns[1][1], 0, 0, opts)
 end
 
 remove_virtual_text = function()
