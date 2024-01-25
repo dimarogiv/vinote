@@ -1,5 +1,4 @@
-                                                                                
-
+x-> projects -> vim_as_a_file_system_browser
 The idea: vim should be able to browse all of the file system.
 
 - [x] When typing ef on some word it goes to that file or folder. If it's a

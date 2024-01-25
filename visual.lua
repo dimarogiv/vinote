@@ -87,22 +87,27 @@ add_header = function()
       table.insert(file_content, line)
     end
   end
-  local is_first_line_empty
-  if file_content[1] == nil then
-    is_first_line_empty = 1
+  local is_header
+  if #file_content > 0 and string.find(file_content[1], "x%-%>") == 1 then
+    write_log("is_header = 1")
+    is_header = 1
   else
-    is_first_line_empty = #file_content[1] == 0
-    is_first_line_empty = file_content[1] == '                                                                                '
+    write_log("is_header = nil")
+    is_header = nil
   end
-  if not is_first_line_empty then
+  local _, starting_level = string.gsub(root, "/", "")
+  starting_level = starting_level + 2
+  local handle = io.popen([[echo ']] .. path .. [[' | awk 'BEGIN{FS="/";OFS=" -> "}{$1=$1;str="x-> " $]] .. starting_level .. [[;for (i=]] .. starting_level .. [[+1; i<=NF; i++) str=str " -> " $i; print str}']])
+  local path_header = handle:read('*l')
+  handle:close()
+  if not is_header then
     local pos = vim.fn.getcurpos()
-    vim.cmd.normal('ggO')
-    vim.cmd.normal('80i ')
+    vim.cmd.normal('ggO' .. path_header)
     vim.fn.setpos('.', pos)
     vim.cmd.normal('j')
   end
   local text = {
-    path,
+    path_header,
     '',
     vim.fn.expand("%:p:h:t"),
     '',
@@ -114,7 +119,7 @@ add_header = function()
   end
   local opts = {
     id = 1,
-    virt_lines = lines,
+    virt_lines = {lines[1]},
     virt_lines_above = false,
     virt_text_pos = 'overlay',
     virt_text = {{text[1], 'Comment'}},
