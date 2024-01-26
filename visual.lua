@@ -95,10 +95,11 @@ add_header = function()
     write_log("is_header = nil")
     is_header = nil
   end
-  local _, starting_level = string.gsub(root, "/", "")
-  starting_level = starting_level + 2
-  local handle = io.popen([[echo ']] .. path .. [[' | awk 'BEGIN{FS="/";OFS=" -> "}{$1=$1;str="x-> " $]] .. starting_level .. [[;for (i=]] .. starting_level .. [[+1; i<=NF; i++) str=str " -> " $i; print str}']])
+  path = path:sub(#root+2)
+  path = "x-> " .. path:gsub("/", " -> ")
+  local handle = io.popen([[echo ']] .. path .. [[' | sed 's/-> [a-z]/\U&/g']])
   local path_header = handle:read('*l')
+  path_header = path_header:gsub("_", " ")
   handle:close()
   if not is_header then
     local pos = vim.fn.getcurpos()
