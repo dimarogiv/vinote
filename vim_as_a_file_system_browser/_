@@ -1,4 +1,4 @@
-x-> projects -> vim_as_a_file_system_browser
+x-> Projects -> Vim as a file system browser
 The idea: vim should be able to browse all of the file system.
 
 - [x] When typing ef on some word it goes to that file or folder. If it's a
@@ -18,6 +18,7 @@ The idea: vim should be able to browse all of the file system.
       the cursor
 - [ ] make a client for accessing a remote note system based on vim
 - [ ] make a client for accessing a remote note system for android
+- [ ] make a web client for vinote
 - [ ] make the possibility to display site's titles based on links in the file
 - [ ] add a separate function for removing the root of any note path
 - [x] move the plugin into the directory for plugins (and write a Makefile or
@@ -37,6 +38,12 @@ The idea: vim should be able to browse all of the file system.
 - [ ] make config.lua richer for configuration
 - [x] add header that shows where you are
 - [ ] write the real text under header
+- [ ] make ESC go level_up() if in nomal mode, and Enter go_to_note(cword) if in
+      normal mode
+- [ ] if the cursor is between two stars Enter acts like go_to_note() where it
+      reads the whole string between the stars, including spaces and converting
+      them to underscores
+- [ ] if opening another instance of vinote kill the previous one
 
 Notion: 
 - [x] while editing notes it saves repeatedly. 
@@ -73,14 +80,17 @@ Notion:
 - [x] make a hotkey for completeng the task (adding the 'x' between '[ ]')
 - [ ] make the sorting of todo lists feature so that it can show non-done tasks
       first
+- [ ] remove headers from searching list
 
 ## issues
 - [x] link() function fails
 - [x] go_home function fails, error: attempt to concatenate path=nil
 - [x] searching through the buffer after recursive search doesn't work
 - [ ] unable to set cursor pos to the first line after searching
-- [ ] make the header appear above the first line
+- [x] make the header appear above the first line
 - [x] nvim fails on newly created notes because of add_header() function
+- [x] when adding a header above the first line and the line contains # or some
+      other symbol that adds automatically it adds there too.
 
 File browser: 
 - [ ] while edititng files it should be saved explicitly, but when not

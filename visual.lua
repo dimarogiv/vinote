@@ -103,7 +103,9 @@ add_header = function()
   handle:close()
   if not is_header then
     local pos = vim.fn.getcurpos()
-    vim.cmd.normal('ggO' .. path_header)
+    vim.cmd.normal('ggO')
+    vim.cmd.normal('cc')
+    vim.cmd.normal('i' .. path_header)
     vim.fn.setpos('.', pos)
     vim.cmd.normal('j')
   end
