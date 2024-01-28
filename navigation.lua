@@ -53,7 +53,6 @@ end
 horizontal_navigation = function(direction)
   local handle = io.popen("find \"..\" -not -path \"../.*\" -mindepth 1 -maxdepth 1 -type d 2>/dev/null")
   local list = {}
-  --for item in handle:read("*l") do
   while true do
     local item = handle:read("*l")
     if item == nil then break end
@@ -69,9 +68,6 @@ horizontal_navigation = function(direction)
       break
     end
   end
-  --print(list[itemn])
-  --print(list[itemn % #list])
-  --print((itemn % (#list + 1)))
   if direction == 1 then
     wgo_to_note(list[(itemn % #list) + 1])
   elseif direction == -1 then
