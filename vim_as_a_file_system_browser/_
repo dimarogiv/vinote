@@ -14,7 +14,7 @@ The idea: vim should be able to browse all of the file system.
 - [x] when searching for a keyword and clicking ESC it cancels without going
       anywhere
 - [ ] make a command for going forward in history
-- [ ] make it open the context of cword file inside the current note, just below
+- [x] make it open the context of cword file inside the current note, just below
       the cursor
 - [ ] make a client for accessing a remote note system based on vim
 - [ ] make a client for accessing a remote note system for android
@@ -34,7 +34,7 @@ The idea: vim should be able to browse all of the file system.
 - [x] make a hotkey for local search rather than recursive
 - [ ] listing through notes inside current note
 - [ ] jumping through notes links inside the current buffer
-- [ ] add the search for the note by a file, not text feature with `find`
+- [x] add the search for the note by a file, not text feature with `find`
 - [ ] make config.lua richer for configuration
 - [x] add header that shows where you are
 - [x] write the real text under header
@@ -84,6 +84,7 @@ Notion:
 - [ ] integrate git into vinote where the messages are named by the current
       date, and the frequency of automatic making commits is set by an
       environment variable.
+- [ ] replace spaces with _ when searching for a file
 
 ## issues
 - [x] link() function fails

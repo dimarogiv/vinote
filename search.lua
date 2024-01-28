@@ -13,6 +13,17 @@ go_search_result = function(res)
   end
 end
 
+go_file_search_result = function(res)
+  write_log([[listtogo[res] = ]] .. listtogo[res])
+  local path = listtogo[res]
+  write_log([[path = ]] .. path)
+  if string.sub(path, 1, 1) == '/' then
+    wgo_to_note(root .. path)
+  else
+    wgo_to_note(root)
+  end
+end
+
 search_note = function(search_root)
   vim.fn.inputsave()
   pattern = vim.fn.input("Search: ")
@@ -27,4 +38,22 @@ search_note = function(search_root)
     listtoshow[item] = vim.fn.split(list[item], root)[1]
   end
   popup_menu_create(listtoshow)
+  window_type = "popup_menu_text_search"
+end
+
+search_file = function()
+  vim.fn.inputsave()
+  pattern = vim.fn.input("Search file: ")
+  vim.fn.inputrestore()
+  list = vim.fn.systemlist("find " .. root .. " -name '*" .. pattern .. "*'")
+  if #list == 0 then
+    return
+  end
+  listtogo = list
+  local listtoshow = list
+  for item=1, #listtoshow, 1 do
+    listtoshow[item] = vim.fn.split(list[item], root)[1]
+  end
+  popup_menu_create(listtoshow)
+  window_type = "popup_menu_file_search"
 end
