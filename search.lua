@@ -17,7 +17,7 @@ search_note = function(search_root)
   vim.fn.inputsave()
   pattern = vim.fn.input("Search: ")
   vim.fn.inputrestore()
-  list = vim.fn.systemlist("grep -R --exclude='.*' \'" .. pattern .. "\' " .. search_root .. " 2>&1 | grep -v 'grep:' | sed 's/\\/_:/:\\t\\t/'")
+  list = vim.fn.systemlist("grep -R --exclude='.*' \'" .. pattern .. "\' " .. search_root .. " 2>&1 | grep -v 'grep:' | grep -v '/_:x-> ' | sed 's/\\/_:/:\\t\\t/'")
   if #list == 0 then
     return
   end
