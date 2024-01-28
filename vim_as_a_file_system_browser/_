@@ -32,7 +32,7 @@ The idea: vim should be able to browse all of the file system.
       == "\r" then close the window and buffer
 - [x] on_key() function is assigned on startup
 - [x] make a hotkey for local search rather than recursive
-- [ ] listing through notes inside current note
+- [x] listing through notes inside current note
 - [ ] jumping through notes links inside the current buffer
 - [x] add the search for the note by a file, not text feature with `find`
 - [ ] make config.lua richer for configuration
