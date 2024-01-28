@@ -84,7 +84,7 @@ Notion:
 - [ ] integrate git into vinote where the messages are named by the current
       date, and the frequency of automatic making commits is set by an
       environment variable.
-- [ ] replace spaces with _ when searching for a file
+- [x] replace spaces with _ when searching for a file
 
 ## issues
 - [x] link() function fails

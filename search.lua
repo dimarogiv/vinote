@@ -45,6 +45,7 @@ search_file = function()
   vim.fn.inputsave()
   pattern = vim.fn.input("Search file: ")
   vim.fn.inputrestore()
+  pattern = pattern:gsub(' ', '_')
   list = vim.fn.systemlist("find " .. root .. " -name '*" .. pattern .. "*'")
   if #list == 0 then
     return
