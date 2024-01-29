@@ -49,13 +49,13 @@ name, since the note doesn't exist anymore.
 In the shell:
 ```
 git clone https://github.com/dimarogiv/vinote/vinote.git
-make install
+sudo make install
 ```
 
 Open your `~/.bashrc` file in any text editor and add this in the beginning:
 ```
 export VINOTE_ROOT_DIR="/path/to/your/notes"
-alias note='nvim -c"lua require(\"vinote.vinote\")"'
+note='nvim -c"lua require(\"vinote.vinote\")"'
 ```
 
 Now, to launch it type `note` on the command line.

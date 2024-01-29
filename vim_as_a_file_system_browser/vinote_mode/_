@@ -1,0 +1,4 @@
+x-> Projects -> Vim as a file system browser -> Vinote mode
+Make a vinote mode, where all the shortcuts are accessble much easier, and the
+whole keyboard is filled with them replacing all the vim's default keys. When
+escaping from that mode vim acts like normal vim.

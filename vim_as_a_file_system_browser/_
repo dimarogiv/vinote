@@ -4,7 +4,7 @@ The idea: vim should be able to browse all of the file system.
 - [x] When typing ef on some word it goes to that file or folder. If it's a
       folder it opens _ there, if it's a file it opens that file.
 - [ ] format *header* beautifully
-- [ ] the path should be added at the top of each window (requires patching)
+- [x] the path should be added at the top of each window (requires patching)
 - [ ] find some beautiful replacement for asterisks for denoting the files. It
       could be vertical pipes
 - [ ] reassign the control keys to something more intuitive and more accessible,
@@ -43,7 +43,10 @@ The idea: vim should be able to browse all of the file system.
 - [ ] if the cursor is between two stars Enter acts like go_to_note() where it
       reads the whole string between the stars, including spaces and converting
       them to underscores
-- [ ] if opening another instance of vinote kill the previous one
+- [x] if opening another instance of vinote kill the previous one
+- [ ] *vinote_mode*
+- [ ] put the functions into tables which are named after the files they are
+      defined at
 
 Notion: 
 - [x] while editing notes it saves repeatedly. 
@@ -85,6 +88,9 @@ Notion:
       date, and the frequency of automatic making commits is set by an
       environment variable.
 - [x] replace spaces with _ when searching for a file
+- [ ] when entering the words between stars it converts spaces to underscores
+- [ ] adding of the tasks made easier with `o- [ ] ` and leaving you in insert
+      mode
 
 ## issues
 - [x] link() function fails
