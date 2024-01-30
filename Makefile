@@ -9,4 +9,4 @@ install:
 	cp navigation.lua ~/.config/nvim/lua/vinote
 	cp search.lua ~/.config/nvim/lua/vinote
 	cp visual.lua ~/.config/nvim/lua/vinote
-	cp note /usr/local/bin
+	sudo cp note /usr/local/bin
