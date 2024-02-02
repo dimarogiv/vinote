@@ -38,7 +38,7 @@ The idea: vim should be able to browse all of the file system.
 - [ ] make config.lua richer for configuration
 - [x] add header that shows where you are
 - [x] write the real text under header
-- [ ] make ESC go level_up() if in nomal mode, and Enter go_to_note(cword) if in
+- [x] make ESC go level_up() if in nomal mode, and Enter go_to_note(cword) if in
       normal mode
 - [ ] if the cursor is between two stars Enter acts like go_to_note() where it
       reads the whole string between the stars, including spaces and converting
