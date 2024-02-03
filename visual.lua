@@ -145,3 +145,9 @@ end
 remove_extras = function()
   remove_virtual_text()
 end
+
+get_site_title = function(link)
+  local handle = io.popen([[printf '%s\n' 'set PRINTER=P:printf \'%0s\\n\' "$LYNX_PRINT_TITLE">&3:TRUE' 'key p' 'key Select key' 'key ^J' 'exit' 'EOF' | lynx 3>&1 > /dev/null -nopause -noprint -accept_all_cookies -cmd_script /dev/stdin<<'EOF' ']] .. link .. [[']])
+  title = handle:read('*l')
+  print(title)
+end

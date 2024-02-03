@@ -17,8 +17,8 @@ The idea: vim should be able to browse all of the file system.
 - [x] make it open the context of cword file inside the current note, just below
       the cursor
 - [ ] make a client for accessing a remote note system based on vim
-- [ ] make a client for accessing a remote note system for android
-- [ ] make a web client for vinote
+- [ ] make an *android_client* for accessing a remote note system
+- [ ] make a *web_client* for vinote
 - [ ] make the possibility to display site's titles based on links in the file
 - [ ] add a separate function for removing the root of any note path
 - [x] move the plugin into the directory for plugins (and write a Makefile or
