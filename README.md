@@ -1,8 +1,8 @@
 # vinote
 
 ## Description
-Vinote is a notion-like note taking system, the main feature of which is  
-the tree-like structure of notes.  
+Vinote is a notion-like note taking system, the main feature of which is  the
+tree-like structure of notes, customizability and heavy use of keyboard.  
 
 Here one note can contain another one, which can be a more detailed explanation  
 of some point in the parent one, or the parent one can be a list of the child  
@@ -16,7 +16,7 @@ It's made as a plugin for Neovim text editor, so at least basic knowledge of vim
 is required.  
 
 ## How to use
-At first, inn the shell type `note`.
+At first, in the shell type `note`.
 
 At the first use it opens your root note, which is empty by default. To add a  
 new note insert \*note_name\* where note_name is the name of the new  
