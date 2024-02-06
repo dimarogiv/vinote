@@ -39,7 +39,7 @@ To rename it do the same, but within the same note.
 To create a link type the name of the link, move the cursor on it, and type  
 `el`.  
 
-To search through notes recursively type `es`, type the keyword, then choose the  
+To search through notes recursively type `esn`, type the keyword, then choose the  
 right result and press `Enter`. It will move you to the choosen note.  
 
 To remove a note move the cursor on it and type `er`, and now you can delete its  
@@ -49,14 +49,9 @@ name, since the note doesn't exist anymore.
 In the shell:
 ```
 git clone https://github.com/dimarogiv/vinote/vinote.git
-sudo make install
+make install
 ```
-
-Open your `~/.bashrc` file in any text editor and add this in the beginning:
-```
-export VINOTE_ROOT_DIR="/path/to/your/notes"
-note='nvim -c"lua require(\"vinote.vinote\")"'
-```
+When asks for password enter your password for `sudo`.
 
 Now, to launch it type `note` on the command line.
 
