@@ -28,13 +28,6 @@ init_keypress_handler = function()
   ns[3] = vim.api.nvim_create_namespace("Chooser_ns")
   window_type="regular_note"
   vim.on_key(function(key)
-    if key == '\r' and window_type == 'popup_menu_text_search' then
-      local res = choose_string()
-      vim.api.nvim_win_close(0, true)
-      vim.api.nvim_buf_delete(0, {force = true})
-      window_type = 'regular_window'
-      go_search_result(res)
-    end
     if key == '\r' and window_type == 'popup_menu_file_search' then
       local res = choose_string()
       vim.api.nvim_win_close(0, true)

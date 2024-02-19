@@ -17,6 +17,10 @@ The idea: vim should be able to browse all of the file system.
 - [x] make it open the context of cword file inside the current note, just below
       the cursor
 - [ ] make a client for accessing a remote note system based on vim
+- [ ] refine in some way the idea you did: separate `note` for client and `note`
+      for server
+- [ ] make two possible ways of starting `note` on client side: remotely and
+      locally
 - [ ] make an *android_client* for accessing a remote note system
 - [ ] make a *web_client* for vinote
 - [ ] make the possibility to display site's titles based on links in the file
@@ -47,6 +51,10 @@ The idea: vim should be able to browse all of the file system.
 - [ ] *vinote_mode*
 - [ ] put the functions into tables which are named after the files they are
       defined at
+- [ ] write a decent documentation in manpages
+- [ ] write documentation in html
+- [ ] write a couple of tutorials in web concerning vinote both using and
+      setting up, e.g. setting up web server with it
 
 Notion: 
 - [x] while editing notes it saves repeatedly. 
@@ -101,6 +109,7 @@ Notion:
 - [x] nvim fails on newly created notes because of add_header() function
 - [x] when adding a header above the first line and the line contains # or some
       other symbol that adds automatically it adds there too.
+- [x] when searching by text it attempts to create a new folder
 
 File browser: 
 - [ ] while edititng files it should be saved explicitly, but when not

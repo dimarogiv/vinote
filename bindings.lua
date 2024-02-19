@@ -18,7 +18,14 @@ vim.keymap.set('n', vinote_leader_key .. search_note_by_file_key, function() sea
 vim.keymap.set('n', vinote_leader_key .. go_to_next_neighbour_note_key, function() horizontal_navigation(1) end)
 vim.keymap.set('n', vinote_leader_key .. go_to_prev_neighbour_note_key, function() horizontal_navigation(-1) end)
 vim.keymap.set('n', "<ESC>", function() wgo_to_note(vim.fn.expand([[%:p:h:h]])) end)
-vim.keymap.set('n', "<CR>", function() wgo_to_note(vim.fn.expand([[<cword>]])) end)
+vim.keymap.set('n', "<CR>", function()
+  if window_type == 'popup_menu_text_search' then
+    go_search_result()
+  else
+    wgo_to_note(vim.fn.expand([[<cword>]]))
+  end
+end
+)
 
 vim.api.nvim_create_autocmd("BufRead", {command = "set syntax=markdown"})
 vim.api.nvim_create_autocmd({"TextChanged", "TextChangedT", "ModeChanged"}, {callback = update_file})

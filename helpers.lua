@@ -21,7 +21,7 @@ end
 
 write_log = function(text)
   local logstr = vim.fn.strftime("%X") .. ": " .. text
-  vim.fn.writefile({logstr}, logfile)
+  vim.fn.writefile({logstr}, logfile, 'a')
 end
 
 choose_string = function()

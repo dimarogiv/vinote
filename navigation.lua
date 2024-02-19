@@ -1,11 +1,11 @@
 go_to_note = function(path)
-  write_log("go_to_note(" .. path .. ")")
+  write_log("go_to_note: go_to_note(" .. path .. ")")
   remove_extras()
   if vim.fn.isdirectory(path) == 0 then
     vim.fn.mkdir(path)
   end
   path = vim.fn.fnamemodify(path, ":p:h")
-  write_log("go_to_note(" .. path .. ")")
+  write_log("go_to_note: go_to_note(" .. path .. ")")
   if vim.fn.match(path, root) >= 0 then
     if vim.fn.isdirectory(path) > 0 then
       vim.fn.chdir(path)
@@ -18,7 +18,7 @@ go_to_note = function(path)
       vim.cmd.edit("_")
     end
   else
-    write_log("error: " .. path .. ": the path is unaccessible!" .. ": match() returns: " .. vim.fn.match(path, root))
+    write_log("go_to_note: error: " .. path .. ": the path is unaccessible!" .. ": match() returns: " .. vim.fn.match(path, root))
   end
   init_ns()
   add_extras()
