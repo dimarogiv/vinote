@@ -16,7 +16,7 @@ The idea: vim should be able to browse all of the file system.
 - [ ] make a command for going forward in history
 - [x] make it open the context of cword file inside the current note, just below
       the cursor
-- [ ] make a client for accessing a remote note system based on vim
+- [ ] make a client for *accessing* a remote note system based on vim
 - [ ] refine in some way the idea you did: separate `note` for client and `note`
       for server
 - [ ] make two possible ways of starting `note` on client side: remotely and
@@ -99,6 +99,8 @@ Notion:
 - [ ] when entering the words between stars it converts spaces to underscores
 - [ ] adding of the tasks made easier with `o- [ ] ` and leaving you in insert
       mode
+- [ ] SQL integration, where some table is read from SQL table, written in a
+      buffer of vinote, and uploaded back to SQL when edited/exited of the note
 
 ## issues
 - [x] link() function fails
@@ -110,6 +112,10 @@ Notion:
 - [x] when adding a header above the first line and the line contains # or some
       other symbol that adds automatically it adds there too.
 - [x] when searching by text it attempts to create a new folder
+- [x] when searching by text and click ESC it replaced current row by the
+      current file's header.
+- [x] when searching not in home directory and clicking ESC it goes levelup
+      relatively to the current note
 
 File browser: 
 - [ ] while edititng files it should be saved explicitly, but when not

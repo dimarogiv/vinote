@@ -35,11 +35,6 @@ init_keypress_handler = function()
       window_type = 'regular_window'
       go_file_search_result(res)
     end
-    if key == '\x1B' and vim.fn.match(window_type, 'popup_menu') >= 0 then
-      vim.api.nvim_win_close(popup_win, true)
-      vim.api.nvim_buf_delete(popup_buf, {force = true})
-      window_type = 'regular_window'
-    end
   end, ns[3])
 end
 

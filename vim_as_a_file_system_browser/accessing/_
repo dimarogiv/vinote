@@ -1,0 +1,6 @@
+x-> Projects -> Vim as a file system browser -> Accessing
+If there is an internet connection:
+Check if are notes up to date with md5sum.
+If it's changed both locally and on server save the latest version.
+If the notes on the server and local don't match get or upload the latest
+version.
