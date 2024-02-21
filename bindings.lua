@@ -28,7 +28,8 @@ vim.keymap.set('n', '<ESC>', function()
 end)
 
 vim.keymap.set('n', "<CR>", function()
-  if window_type == 'popup_menu_text_search' then
+  if vim.fn.match(window_type, 'popup_menu') and
+    vim.fn.match(window_type, 'search') then
     go_search_result()
   else
     wgo_to_note(vim.fn.expand([[<cword>]]))

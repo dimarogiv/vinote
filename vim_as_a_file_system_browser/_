@@ -116,6 +116,7 @@ Notion:
       current file's header.
 - [x] when searching not in home directory and clicking ESC it goes levelup
       relatively to the current note
+- [x] when searching for a file it attempts to create a new note at root
 
 File browser: 
 - [ ] while edititng files it should be saved explicitly, but when not
