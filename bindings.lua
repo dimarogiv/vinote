@@ -28,7 +28,7 @@ vim.keymap.set('n', '<ESC>', function()
 end)
 
 vim.keymap.set('n', "<CR>", function()
-  if vim.fn.match(window_type, 'popup_menu') and
+  if vim.fn.match(window_type, 'popup_menu') >= 0 and
     vim.fn.match(window_type, 'search') then
     go_search_result()
   else
