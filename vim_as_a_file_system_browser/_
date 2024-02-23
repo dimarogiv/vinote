@@ -49,7 +49,7 @@ The idea: vim should be able to browse all of the file system.
       them to underscores
 - [x] if opening another instance of vinote kill the previous one
 - [ ] *vinote_mode*
-- [ ] put the functions into tables which are named after the files they are
+- [x] put the functions into tables which are named after the files they are
       defined at
 - [ ] write a decent documentation in manpages
 - [ ] write documentation in html
