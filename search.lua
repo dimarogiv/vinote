@@ -38,7 +38,11 @@ search = {
     pattern = vim.fn.input("Search: ")
     vim.fn.inputrestore()
     list = vim.fn.systemlist("grep -R --exclude='.*' \'" .. pattern .. "\' " .. search_root .. " 2>&1 | grep -v 'grep:' | grep -v '/_:x-> ' | sed 's/\\/_:/:\\t\\t/'")
-    helpers.write_log('search_note: list[1] = ' .. list[1])
+    if not list[1] == nil then
+      helpers.write_log('search_note: list[1] = ' .. list[1])
+    else
+      helpers.write_log('search_note: list[1] = nil')
+    end
     if #list == 0 then
       return
     end
