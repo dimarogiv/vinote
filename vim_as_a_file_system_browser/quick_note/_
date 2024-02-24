@@ -1,0 +1,9 @@
+x-> Projects -> Vim as a file system browser -> Quick note
+When user enter to the shell:
+```
+qvinote some quick note that needs to be placed somewhere else later
+```
+vinote writes into /quick_notes the new string:
+```
+some quick note that needs to be placed somewhere else later
+```

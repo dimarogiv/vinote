@@ -1,0 +1,6 @@
+x-> Projects -> Vim as a file system browser -> Not conflict
+When launching another instance of vinote it creates a new file with history in
+/tmp dir. When closing vinote it copies that file to cache_dir.
+
+When launching another instance of vinote it copies the history file to /tmp
+directory, and when closing vinote it copies that file back to cache_dir.

@@ -1,4 +1,5 @@
 x-> Projects -> Vim as a file system browser
+x-> Projects -> Vim as a file system browser
 The idea: vim should be able to browse all of the file system.
 
 - [x] When typing ef on some word it goes to that file or folder. If it's a
@@ -101,6 +102,16 @@ Notion:
       mode
 - [ ] SQL integration, where some table is read from SQL table, written in a
       buffer of vinote, and uploaded back to SQL when edited/exited of the note
+- [ ] *try_to_replicate*
+- [ ] *spaced_repetition_timer*
+- [ ] *instant_navigation*
+- [ ] *setting_note_metadata*
+- [ ] make searching recursively based on /current_branch rather than /
+- [ ] more convenient *way_of_creating_a_new_note*
+- [ ] quick *logging*
+- [ ] *quick_note*
+- [ ] make vinote not close another instance of vinote and *not_conflict* with
+      it by history
 
 ## issues
 - [x] link() function fails

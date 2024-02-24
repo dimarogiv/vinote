@@ -1,0 +1,10 @@
+x-> Projects -> Vim as a file system browser -> Setting note metadata
+Metadata the user can set:
+  - [ ] questions to ask in spaced repetition
+  - [ ] if is spaced repetition timer enabled
+  - [ ] date to set a reminder
+
+Metadata vinote sets:
+  - [ ] the date of creation of the note
+  - [ ] the date of the last modification of the note
+  - [ ] stage of spaced repetition timer

@@ -1,0 +1,10 @@
+x-> Projects -> Vim as a file system browser -> Logging
+When entering in a shell:
+```
+log wanna_sleep after meal
+```
+
+Vinote writes into /log/wanna_sleep a new string:
+```
+02/15/2024 12:34:12: after meal
+```

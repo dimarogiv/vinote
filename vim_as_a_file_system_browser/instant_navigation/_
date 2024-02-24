@@ -1,0 +1,5 @@
+x-> Projects -> Vim as a file system browser -> Instant navigation
+When the user enters a path to the note as an argument when launching vinote it
+goes to that note right after launch.
+
+Useful in scripts and aliases.

@@ -1,0 +1,10 @@
+x-> Projects -> Vim as a file system browser -> Way of creating a new note
+When the user enters:
+*new_note*:
+Here is the body of the new note.
+A single dot specifies the end of the note body.
+.
+
+Vinote creates a *new_note* which contains the text between `*:` and `.`. When
+this note is reloaded the text between `*:` and `.` disappeared. However when
+expanding a note it shows the content in the same format.

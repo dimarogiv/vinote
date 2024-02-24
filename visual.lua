@@ -16,20 +16,22 @@ visual = {
   ,
 
   popup_menu_create = function(list)
-    popup_buf = vim.api.nvim_create_buf(true, true)
-    local win_parameters = {
-      relative = 'win',
-      row = 3,
-      col = 3,
-      width = 74,
-      height = 40,
-      style = 'minimal',
-      border = 'rounded',
-      noautocmd = true,
-    }
-    popup_win = vim.api.nvim_open_win(popup_buf, true, win_parameters)
-    vim.api.nvim_buf_set_lines(popup_buf, 0, -1, false, list)
-    window_type = "popup_menu"
+    if not list == nil then
+      popup_buf = vim.api.nvim_create_buf(true, true)
+      local win_parameters = {
+        relative = 'win',
+        row = 3,
+        col = 3,
+        width = 74,
+        height = 40,
+        style = 'minimal',
+        border = 'rounded',
+        noautocmd = true,
+      }
+      popup_win = vim.api.nvim_open_win(popup_buf, true, win_parameters)
+      vim.api.nvim_buf_set_lines(popup_buf, 0, -1, false, list)
+      window_type = "popup_menu"
+    end
   end
   ,
 

@@ -1,0 +1,12 @@
+x-> Projects -> Vim as a file system browser -> Spaced repetition timer
+When launching vinote a window with the first thing to try to recall pops up.
+There should be questions the user set before for that note, or no questions and
+just note name, in this case the user should just try to replicate everything
+written in the note as precisely as possible.
+
+There should be 4 options:
+  1. postpone repetition and go to the last viewed note
+  2. recalled, go to the next question, if any
+  3. didn't recall, reset spaced repetition timer and go to the next note, if
+      any
+  4. go to the original text and read it

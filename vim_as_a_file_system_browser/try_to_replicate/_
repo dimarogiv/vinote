@@ -1,0 +1,4 @@
+x-> Projects -> Vim as a file system browser -> Try to replicate
+When activated the buffer is cleared and the user should try to replicate what
+was originally written in there before, or answer the questions the user set
+initially. When deactivated the original text comes back.
