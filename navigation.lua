@@ -2,6 +2,7 @@ navigation = {
   go_to_note = function(path)
     helpers.write_log("go_to_note: go_to_note(" .. path .. ")")
     visual.remove_extras()
+    init.update_file()
     if vim.fn.isdirectory(path) == 0 then
       vim.fn.mkdir(path)
     end
@@ -34,6 +35,7 @@ navigation = {
 
   go_back = function()
     local pathlist = {}
+    init.update_file()
     if vim.fn.filereadable(cache_dir .. '/motion_history') > 0 and #vim.fn.readfile(cache_dir .. '/motion_history') > 0 then
       pathlist = vim.fn.readfile(cache_dir .. '/motion_history')
       helpers.write_log("len(motion_history) = " .. #pathlist)
@@ -55,6 +57,7 @@ navigation = {
   ,
 
   horizontal_navigation = function(direction)
+    init.update_file()
     local handle = io.popen("find \"..\" -not -path \"../.*\" -mindepth 1 -maxdepth 1 -type d 2>/dev/null")
     local list = {}
     while true do

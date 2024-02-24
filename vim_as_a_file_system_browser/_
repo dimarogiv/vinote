@@ -130,6 +130,7 @@ Notion:
 - [x] when searching for a file it attempts to create a new note at root
 - [x] when clicking enter on some note it attempts to close some window instead
       of going anywhere
+- [ ] when searching by text the cursor doesn't move to that keyword
 
 File browser: 
 - [ ] while edititng files it should be saved explicitly, but when not

@@ -65,7 +65,7 @@ init = {
   ,
 
   quit = function()
-    vim.cmd.execute([[normal :q!<CR>]])
+    vim.cmd.execute([[normal :wq<CR>]])
   end
 }
 
