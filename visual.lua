@@ -16,7 +16,7 @@ visual = {
   ,
 
   popup_menu_create = function(list)
-    if not list == nil then
+    if type(list) == 'table' and #list > 0 then
       popup_buf = vim.api.nvim_create_buf(true, true)
       local win_parameters = {
         relative = 'win',
@@ -31,6 +31,8 @@ visual = {
       popup_win = vim.api.nvim_open_win(popup_buf, true, win_parameters)
       vim.api.nvim_buf_set_lines(popup_buf, 0, -1, false, list)
       window_type = "popup_menu"
+    else
+      print('Error: the result list is empty')
     end
   end
   ,

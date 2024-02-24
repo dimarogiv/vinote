@@ -27,17 +27,6 @@ init = {
   ,
 
   init_keypress_handler = function()
-    ns[3] = vim.api.nvim_create_namespace("Chooser_ns")
-    window_type="regular_note"
-    vim.on_key(function(key)
-      if key == '\r' and window_type == 'popup_menu_file_search' then
-        local res = helpers.choose_string()
-        vim.api.nvim_win_close(0, true)
-        vim.api.nvim_buf_delete(0, {force = true})
-        window_type = 'regular_window'
-        search.go_file_search_result(res)
-      end
-    end, ns[3])
   end
   ,
 
@@ -66,6 +55,7 @@ init = {
     init.restore_path()
     vim.opt.syntax = "markdown"
     vim.opt.iskeyword:append({ "/", "."})
+    window_type = 'regular_window'
   end
   ,
 
