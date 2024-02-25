@@ -31,12 +31,9 @@ vim.keymap.set('n', "<CR>", function()
   if window_type == 'popup_menu_text_search' then
     search.go_search_result()
   elseif window_type == 'popup_menu_file_search' then
-    local res = helpers.choose_string()
-    search.go_file_search_result(res)
+    search.go_file_search_result()
   elseif window_type == 'regular_window' then
     navigation.wgo_to_note(vim.fn.expand([[<cword>]]))
-  else
-    print(window_type)
   end
 end)
 

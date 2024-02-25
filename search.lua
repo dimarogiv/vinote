@@ -21,7 +21,8 @@ search = {
   end
   ,
 
-  go_file_search_result = function(res)
+  go_file_search_result = function()
+    local res = helpers.choose_string()
     vim.api.nvim_win_close(0, true)
     vim.api.nvim_buf_delete(0, {force = true})
     window_type = 'regular_window'
