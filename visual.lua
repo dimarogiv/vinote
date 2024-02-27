@@ -163,8 +163,10 @@ visual = {
   ,
 
   get_site_title = function(link)
-    local handle = io.popen([[printf '%s\n' 'set PRINTER=P:printf \'%0s\\n\' "$LYNX_PRINT_TITLE">&3:TRUE' 'key p' 'key Select key' 'key ^J' 'exit' 'EOF' | lynx 3>&1 > /dev/null -nopause -noprint -accept_all_cookies -cmd_script /dev/stdin<<'EOF' ']] .. link .. [[']])
-    title = handle:read('*l')
-    print(title)
+    local handle = io.popen([[wget -qO- ']] ..
+    link ..
+    [[' | perl -l -0777 -ne 'print $1 if /<title.*?>\s*(.*?)\s*<\/title/si']])
+    local title = handle:read('*l')
+    visual.create_virtual_text({title}, vim.fn.getcurpos()[2], vim.fn.getcurpos()[1], '')
   end
 }

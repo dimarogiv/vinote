@@ -1,5 +1,4 @@
 x-> Projects -> Vim as a file system browser
-x-> Projects -> Vim as a file system browser
 The idea: vim should be able to browse all of the file system.
 
 - [x] When typing ef on some word it goes to that file or folder. If it's a
@@ -24,7 +23,10 @@ The idea: vim should be able to browse all of the file system.
       locally
 - [ ] make an *android_client* for accessing a remote note system
 - [ ] make a *web_client* for vinote
-- [ ] make the possibility to display site's titles based on links in the file
+- [x] make the possibility to display site's titles based on links in the file
+- [ ] add a hotkey for hiding the title
+- [ ] add an autocommand for displaying all link's titles in a buffer right
+      after load
 - [ ] add a separate function for removing the root of any note path
 - [x] move the plugin into the directory for plugins (and write a Makefile or
       installation script)
@@ -56,6 +58,7 @@ The idea: vim should be able to browse all of the file system.
 - [ ] write documentation in html
 - [ ] write a couple of tutorials in web concerning vinote both using and
       setting up, e.g. setting up web server with it
+- [ ] batch moving of notes
 
 Notion: 
 - [x] while editing notes it saves repeatedly. 
@@ -112,6 +115,8 @@ Notion:
 - [ ] *quick_note*
 - [ ] make vinote not close another instance of vinote and *not_conflict* with
       it by history
+- [ ] make the possibilty to write rules for notes, e.g. the content of /today
+      clears every evening
 
 ## issues
 - [x] link() function fails

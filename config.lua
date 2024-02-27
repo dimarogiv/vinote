@@ -24,6 +24,7 @@ uncomplete_task_key = 'tu'
 search_note_by_file_key = 'sf'
 go_to_next_neighbour_note_key = 'nn'
 go_to_prev_neighbour_note_key = 'np'
+get_site_title_key = 'gt'
 
 
 if root == nil then
