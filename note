@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kill $(ps aux | grep vinote | awk '{print $2}') 2>/dev/null
+kill $(ps aux | grep '"vinote.vinote"' | grep require | awk '{print $2}') 2>/dev/null
 sleep 0.03
 [[ -z $(ls -d /tmp/vinote 2>/dev/null) ]] && mkdir /tmp/vinote
 nvim -c"lua require(\"vinote.vinote\")"

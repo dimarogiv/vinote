@@ -117,6 +117,16 @@ Notion:
       it by history
 - [ ] make the possibilty to write rules for notes, e.g. the content of /today
       clears every evening
+- [ ] write in README.txt about that you can create tags by typing #some_tag,
+      and then just search by it.
+- [ ] make a hotkey for adding `- [ ] ` at the start of a string. Or maybe
+      `}O- [ ] `, or just `o- [ ] `.
+- [ ] optimize it for sharing. E.g. renaming all _ files to their folders names,
+      tarring them all together and moving to desktop. Or just copying the
+      current note to desktop.
+- [ ] make a command to copy the content from external file and delete the
+      original file. After entering the keychord a field for entering the
+      filename appears in the bottom.
 
 ## issues
 - [x] link() function fails
