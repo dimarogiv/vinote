@@ -18,3 +18,9 @@ When you edit some entries it shifts, like this:
 +------------------------------------------------------------------------+
 
 And when you click <Esc> it should recover the collumns
+
+Here is the *idea* of how to build them
+To edit them you'll need a separate function which converts all the table (or
+just one row to the initial format for the user).
+In future make it not necessary to format it back to its original format, but do
+in background after the user hits ESC.

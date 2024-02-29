@@ -1,0 +1,17 @@
+x-> Projects -> Vim as a file system browser -> Dynamic tables -> Idea
+1. Find the constraints of the table
+2. Get the number of columns
+3. Replace the common column separator with tab
+4. Add:
+  .TS
+  allbox ;
+  c c c.
+  just before the table
+5. Add .TE just after the table
+6. :.,+6!tbl | groff -ms -Tascii | awk '{if($NF) {print $0}}'
+
++-----+-----+-----+
+| it1 | it2 | it3 |
++-----+-----+-----+
+| it1 | it3 | it5 |
++-----+-----+-----+

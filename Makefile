@@ -10,3 +10,4 @@ install:
 	cp search.lua ~/.config/nvim/lua/vinote
 	cp visual.lua ~/.config/nvim/lua/vinote
 	sudo cp note /usr/local/bin
+	sudo cp vinote.1 /usr/local/share/man/man1/vinote.1

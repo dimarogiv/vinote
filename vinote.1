@@ -1,0 +1,75 @@
+.TH VINOTE 1 "2024-02-28" "vinote 1.0"
+.SH NAME
+vinote \- note taking plugin for Neovim
+.SH SYNOPSIS
+.B note
+.SH DESCRIPTION
+vinote is a note taking application which with a tree-like-structured note
+system in mind.
+.PP
+It makes your note system flexible, and with the possibility to create the whole
+net of notes, aka the second brain.
+.PP
+Its features also include customizability, visual convenience, quick search,
+robustness and others.
+.PP
+See vinote(2) for configuration.
+.\".SH OPTIONS
+.SH DEFAULT KEY BINDINGS
+vinote is controlled by using a key combination of a leader key, `e` by default,
+followed by a command key sequence.
+.PP
+The default command key bindings are:
+.PP
+.IP
+rm         Remove the note under cursor.
+.br
+f          Go to the note under cursor.
+.br
+u          Go to the parent note.
+.br
+c          Choose note for action.
+.br
+rn         Rename the choosen note.
+.br
+sn         Search through all notes recursively by text.
+.br
+h          Go to the root note.
+.br
+b          Go to the previous note.
+.br
+l          Create a link to the choosen note with the name under cursor.
+.br
+sln        Search through the notes recursively by text locally.
+.br
+vx         Expand the note under cursor.
+.br
+vc         Collapse the note under cursor.
+.br
+vax        Expand all notes in the current note.
+.br
+vac        Collapse all notes in the current note.
+.br
+tc         Complete the task under cursor.
+.br
+tu         Uncomplete the task under cursor.
+.br
+sf         Search for a note by filename.
+.br
+nn         Go to the next note inside the parent note.
+.br
+np         Go to the previous note inside the parent note.
+.br
+gt         Print the title of the URL under cursor.
+.IE
+.SH FILES
+~/.config/nvim/lua/vinote/config.lua       User-local vinote configuration file.
+.\".SH NOTES
+.\".SH CAVEATS
+.\".SH BUGS
+.\".SH EXAMPLES
+.SH SEE ALSO
+\fBnvim\fP(1)
+.br
+
+\fBnvim -c:help\f
