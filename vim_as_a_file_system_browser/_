@@ -127,6 +127,12 @@ Notion:
 - [ ] make a command to copy the content from external file and delete the
       original file. After entering the keychord a field for entering the
       filename appears in the bottom.
+- [ ] restrict cursor from moving onto `- [ ] `
+- [ ] make indentation so that when writing just below `- [ ]` item it intends 6
+      chars right right away, and when inserting an empty line it doesn't.
+- [ ] make the possibility to edit tables in real time.
+- [ ] make the possibility to collect all undone tasks in one place, sorted by
+date of creation of each note.
 
 ## issues
 - [x] link() function fails

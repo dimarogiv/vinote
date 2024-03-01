@@ -169,4 +169,16 @@ visual = {
     local title = handle:read('*l')
     visual.create_virtual_text({title}, vim.fn.getcurpos()[2], vim.fn.getcurpos()[1], '')
   end
+  ,
+  create_table = function()
+    local ncols = 3
+    vim.cmd.execute([["normal :'<,'>s/ | /\t/g\<CR>"]])
+    vim.cmd.normal([['<]])
+    vim.cmd.normal([[O.TS]])
+    vim.cmd.normal([[oallbox ;]])
+    vim.cmd.normal([[oc c c.]])
+    vim.cmd.normal([['>]])
+    vim.cmd.normal([[o.TE]])
+    vim.cmd.execute([["normal :?^\.TS?,.!tbl|groff -ms -Tascii|awk '{if($NF){print $0}}'\<CR>"]])
+  end
 }

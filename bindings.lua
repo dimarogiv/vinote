@@ -37,6 +37,7 @@ vim.keymap.set('n', "<CR>", function()
   end
 end)
 vim.keymap.set('n', vinote_leader_key .. get_site_title_key, function() visual.get_site_title(vim.fn.expand('<cWORD>')) end)
+vim.keymap.set('n', vinote_leader_key .. 'tac', function() visual.create_table() end)
 
 vim.api.nvim_create_autocmd("BufRead", {command = "set syntax=markdown"})
 vim.api.nvim_create_autocmd({"TextChanged", "TextChangedT", "ModeChanged"}, {callback = init.update_file})
