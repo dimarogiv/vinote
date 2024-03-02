@@ -2,6 +2,9 @@ cache_dir = os.getenv("HOME") .. "/.cache/vinote"
 history_len = 100
 logfile = "/tmp/vinote/vinote.log"
 
+-- tables
+table_separator = ' | '
+
 -- bindings
 vinote_leader_key = 'e'
 

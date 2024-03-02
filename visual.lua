@@ -172,13 +172,21 @@ visual = {
   ,
   create_table = function()
     local ncols = 3
-    vim.cmd.execute([["normal :'<,'>s/ | /\t/g\<CR>"]])
+    local lines = vim.api.nvim_buf_get_lines(0,
+      vim.api.nvim_buf_get_mark(0, '<')[1] - 1,
+      vim.api.nvim_buf_get_mark(0, '>')[1], true)
+    _, ncols = string.gsub(lines[1], table_separator, table_separator)
+    local formatting = 'c'
+    for _ = 1,ncols,1 do
+      formatting = formatting .. ' c'
+    end
+    vim.cmd.execute([["normal :'<,'>s/]] .. table_separator .. [[/\t/g\<CR>"]])
     vim.cmd.normal([['<]])
     vim.cmd.normal([[O.TS]])
     vim.cmd.normal([[oallbox ;]])
-    vim.cmd.normal([[oc c c.]])
+    vim.cmd.normal('o' .. formatting .. '.')
     vim.cmd.normal([['>]])
     vim.cmd.normal([[o.TE]])
-    vim.cmd.execute([["normal :?^\.TS?,.!tbl|groff -ms -Tascii|awk '{if($NF){print $0}}'\<CR>"]])
+    vim.cmd.execute([["normal :?^\.TS?,.!tbl|groff -ms -Tascii 2>/dev/null|awk '{if($NF){print $0}}'\<CR>"]])
   end
 }
