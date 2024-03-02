@@ -187,6 +187,8 @@ visual = {
     vim.cmd.normal('o' .. formatting .. '.')
     vim.cmd.normal([['>]])
     vim.cmd.normal([[o.TE]])
-    vim.cmd.execute([["normal :?^\.TS?,.!tbl|groff -ms -Tascii 2>/dev/null|awk '{if($NF){print $0}}'\<CR>"]])
+    vim.cmd.execute([["normal :?^\.TS?,.!tbl|]] ..
+      [[groff -ms -Tascii 2>/dev/null|]] ..
+      [[awk '{if($NF){print $0}}'\<CR>"]])
   end
 }
