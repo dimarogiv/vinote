@@ -201,7 +201,7 @@ visual = {
     vim.api.nvim_buf_set_mark(0, '>', vim.fn.getcurpos()[2], 1, {})
     vim.cmd.execute([["normal :'<,'>s/^]] .. table_separator .. [[//\<CR>"]])
     vim.cmd.execute([["normal :'<,'>s/]] .. table_separator .. [[$//\<CR>"]])
-    vim.cmd.execute([["normal :'<,'>s/  / /g\<CR>"]])
+    vim.cmd.execute([["normal :'<,'>s/ \\+/ /g\<CR>"]])
     visual.create_table()
   end
 }
