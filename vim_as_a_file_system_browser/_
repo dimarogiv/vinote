@@ -132,7 +132,10 @@ Notion:
       chars right right away, and when inserting an empty line it doesn't.
 - [ ] make the possibility to edit tables in real time.
 - [ ] make the possibility to collect all undone tasks in one place, sorted by
-date of creation of each note.
+      date of creation of each note.
+- [ ] doing everything without writing into the buffer when creating a table,
+      e.g. through the shell completely.
+- [ ] make the possibility to setup shortcuts for navigation in config.lua
 
 ## issues
 - [x] link() function fails

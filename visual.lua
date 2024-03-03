@@ -180,15 +180,28 @@ visual = {
     for _ = 1,ncols,1 do
       formatting = formatting .. ' c'
     end
-    vim.cmd.execute([["normal :'<,'>s/]] .. table_separator .. [[/\t/g\<CR>"]])
+    vim.cmd.execute([["normal :'<,'>s/]] .. table_separator .. [[/\\t/g\<CR>"]])
     vim.cmd.normal([['<]])
     vim.cmd.normal([[O.TS]])
     vim.cmd.normal([[oallbox ;]])
     vim.cmd.normal('o' .. formatting .. '.')
     vim.cmd.normal([['>]])
-    vim.cmd.normal([[o.TE]])
+    vim.cmd.normal([[o]])
+    vim.cmd.normal([[i.TE]])
     vim.cmd.execute([["normal :?^\.TS?,.!tbl|]] ..
       [[groff -ms -Tascii 2>/dev/null|]] ..
       [[awk '{if($NF){print $0}}'\<CR>"]])
+  end
+  ,
+  update_table = function()
+    vim.cmd.execute([["normal :'<,'>!]] ..
+      [[awk '{if(match($0, /+-/)){}else{print $0}}' |]] ..
+      [[sed 's/|/]] .. table_separator .. [[/g'\<CR>"]])
+    vim.cmd.execute([["/^\\n/-1"]])
+    vim.api.nvim_buf_set_mark(0, '>', vim.fn.getcurpos()[2], 1, {})
+    vim.cmd.execute([["normal :'<,'>s/^]] .. table_separator .. [[//\<CR>"]])
+    vim.cmd.execute([["normal :'<,'>s/]] .. table_separator .. [[$//\<CR>"]])
+    vim.cmd.execute([["normal :'<,'>s/  / /g\<CR>"]])
+    visual.create_table()
   end
 }
