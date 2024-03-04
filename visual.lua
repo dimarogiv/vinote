@@ -170,6 +170,7 @@ visual = {
     visual.create_virtual_text({title}, vim.fn.getcurpos()[2], vim.fn.getcurpos()[1], '')
   end
   ,
+
   create_table = function()
     local ncols = 3
     local lines = vim.api.nvim_buf_get_lines(0,
@@ -193,12 +194,17 @@ visual = {
       [[awk '{if($NF){print $0}}'\<CR>"]])
   end
   ,
+
   update_table = function()
+    local initial_table_end = vim.api.nvim_buf_get_mark(0, '>')[1]
+    local initial_table_start = vim.api.nvim_buf_get_mark(0, '<')[1]
+    local table_length = (initial_table_end - initial_table_start - 1) / 2
+    local disassembled_table_end = initial_table_start + table_length
     vim.cmd.execute([["normal :'<,'>!]] ..
       [[awk '{if(match($0, /+-/)){}else{print $0}}' |]] ..
       [[sed 's/|/]] .. table_separator .. [[/g'\<CR>"]])
-    vim.cmd.execute([["/^\\n/-1"]])
-    vim.api.nvim_buf_set_mark(0, '>', vim.fn.getcurpos()[2], 1, {})
+    helpers.write_log("disassebled_table_end = " .. disassembled_table_end)
+    vim.api.nvim_buf_set_mark(0, '>', 3, 1, {})
     vim.cmd.execute([["normal :'<,'>s/^]] .. table_separator .. [[//\<CR>"]])
     vim.cmd.execute([["normal :'<,'>s/]] .. table_separator .. [[$//\<CR>"]])
     vim.cmd.execute([["normal :'<,'>s/ \\+/ /g\<CR>"]])

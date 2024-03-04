@@ -155,6 +155,7 @@ Notion:
 - [x] when clicking enter on some note it attempts to close some window instead
       of going anywhere
 - [ ] when searching by text the cursor doesn't move to that keyword
+- [x] if a table is in the very end of the buffer it can't be regenerated
 
 File browser: 
 - [ ] while edititng files it should be saved explicitly, but when not
