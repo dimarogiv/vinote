@@ -1,4 +1,4 @@
-vim.keymap.set('n', vinote_leader_key .. remove_note_key, function() management.remove() end)
+vim.keymap.set('n', vinote_leader_key .. remove_note_key, function() management.remove(vim.fn.expand([[<cword>]])) end)
 vim.keymap.set('n', vinote_leader_key .. go_to_note_key, function() navigation.wgo_to_note(vim.fn.expand([[<cword>]])) end)
 vim.keymap.set('n', vinote_leader_key .. level_up_key, function() navigation.wgo_to_note(vim.fn.expand([[%:p:h:h]])) end)
 vim.keymap.set('n', vinote_leader_key .. choose_note_key, function() management.choose() end)

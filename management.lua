@@ -1,14 +1,14 @@
 management = {
   remove = function(path)
-    local handle = io.popen("stat " .. vim.fn.expand([[<cword>]]) .. " | grep 'symbolic link'")
+    local handle = io.popen("stat " .. path .. " | grep 'symbolic link'")
     local output = handle:read("*a")
     handle:close()
     local is_symbolic_link = #output
     if is_symbolic_link > 0 then
-      io.popen("rm " .. vim.fn.expand([[<cword>]]))
+      io.popen([[rm ']] .. path .. [[']])
       print("Link removed")
     else
-      io.popen("rm -rf " .. vim.fn.expand([[<cword>]]))
+      io.popen([[rm -rf ']] .. path .. [[']])
       print("Note removed")
     end
   end
